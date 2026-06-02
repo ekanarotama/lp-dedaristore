@@ -1,0 +1,146 @@
+{
+  "theme": "Light",
+  "archetype": "4 (Swiss & High-Contrast) mixed with 5 (Luxury)",
+  "design_philosophy": "Premium Apple-style minimalism paired with subtle Balinese elegance. Emphasizes trust, clear user pathways (Buyer vs. Seller), generous white space, and refined typography. The layout utilizes bento-grid structures to modernize the tech e-commerce feel.",
+  "colors": {
+    "primary": {
+      "DEFAULT": "#1F3A5F",
+      "description": "Navy / Biru Tua. Use for sticky header background (if solid), large headings (H1/H2), and primary CTA buttons."
+    },
+    "accent": {
+      "gold": "#E0A526",
+      "teal": "#3BAFA0",
+      "description": "Gold is for high-priority CTAs, hover states, and thin Balinese ornament lines. Teal is for secondary actions, trust icons, and grade badges."
+    },
+    "background": {
+      "dominant": "#FFFFFF",
+      "alt": "#F5F6F8",
+      "description": "White is the primary canvas. Soft gray is used for alternating sections to create rhythm."
+    },
+    "text": {
+      "main": "#1A1A1A",
+      "muted": "#4A5568",
+      "inverse": "#FFFFFF",
+      "description": "Dark text for high readability. White text when placed over Navy blocks."
+    }
+  },
+  "typography": {
+    "heading_font": "Plus Jakarta Sans",
+    "body_font": "Manrope",
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#1F3A5F]",
+      "h2": "text-3xl sm:text-4xl font-bold tracking-tight text-[#1F3A5F]",
+      "h3": "text-xl sm:text-2xl font-semibold text-[#1F3A5F]",
+      "h4": "text-lg sm:text-xl font-medium",
+      "body": "text-base leading-relaxed text-[#1A1A1A]",
+      "small": "text-sm text-[#4A5568] tracking-wide"
+    },
+    "rules": "Never use Inter for headings. Keep tight letter spacing on H1/H2."
+  },
+  "spacing_and_layout": {
+    "section_padding": "py-20 md:py-32",
+    "container": "max-w-7xl mx-auto px-6 lg:px-8",
+    "border_radius": "rounded-2xl or rounded-3xl for major cards to keep the smooth Apple feel. Small elements use rounded-lg.",
+    "balinese_touch": "Use a subtle 1px border colored #E0A526/30 as section dividers or to frame bento grid cards. Optionally, apply a very low opacity (5%) traditional texture on the hero or footer background."
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-[#1F3A5F] text-white hover:bg-[#152842] transition-colors shadow-lg hover:shadow-xl rounded-full px-8 py-4 font-semibold flex items-center justify-center gap-2",
+      "accent_gold": "bg-[#E0A526] text-white hover:bg-[#C28E20] transition-colors shadow-lg rounded-full px-8 py-4 font-semibold flex items-center justify-center gap-2",
+      "outline": "border-2 border-[#1F3A5F] text-[#1F3A5F] hover:bg-[#1F3A5F] hover:text-white rounded-full px-8 py-4 font-semibold transition-colors"
+    },
+    "cards": {
+      "bento": "bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100/50 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all",
+      "product": "bg-white rounded-2xl p-4 border border-gray-100 flex flex-col gap-4 hover:-translate-y-1 transition-transform cursor-pointer"
+    },
+    "badges": {
+      "grade_A": "bg-[#3BAFA0]/10 text-[#3BAFA0] border border-[#3BAFA0]/20 px-3 py-1 rounded-full text-xs font-bold uppercase",
+      "grade_B": "bg-[#E0A526]/10 text-[#E0A526] border border-[#E0A526]/20 px-3 py-1 rounded-full text-xs font-bold uppercase"
+    }
+  },
+  "sections": [
+    {
+      "name": "Header",
+      "layout": "Sticky, glassmorphism (bg-white/80 backdrop-blur-xl), 1px border-b border-gray-100. Navy Logo on left, Nav links center, Gold CTA right."
+    },
+    {
+      "name": "Hero Section",
+      "layout": "Centered or 2-column split. Huge H1 'Jual Beli iPhone Second Bali, Terpercaya & Fair'. Two prominent CTA side-by-side: Navy (Saya Mau Beli) and Gold (Saya Mau Jual). Background subtle texture."
+    },
+    {
+      "name": "Problem vs Solution (Makelar vs Dedari)",
+      "layout": "2-column Bento Layout. Left Card (Red/❌): Makelar style (low price, sketchy). Right Card (Teal/✅): Dedari style (75-90% market price, verified)."
+    },
+    {
+      "name": "Seller Path (Jual)",
+      "layout": "Split into two info cards (Jual Putus vs Titip Jual) followed by an Interactive Estimator Calculator (Dropdowns for Model, Battery Health, Condition) matching Shadcn components heavily styled."
+    },
+    {
+      "name": "Buyer Path (Beli / Catalog)",
+      "layout": "Filterable Grid (3 or 4 columns). Product cards with clean iPhone isolated images, Grade Badges (Teal), Price, and 'Beli via WA' button."
+    },
+    {
+      "name": "Grading System",
+      "layout": "A 4-column bento grid detailing Grade A, B, C, D criteria."
+    },
+    {
+      "name": "How It Works",
+      "layout": "3-step horizontal flow with connecting subtle gold dashed lines. Icons in Teal/Gold."
+    },
+    {
+      "name": "Trust Signals",
+      "layout": "Grid of 6 minimalist icons + short text (Verified, Official, Guarantee, etc.)."
+    },
+    {
+      "name": "FAQ",
+      "layout": "Shadcn Accordion styled cleanly with Navy text."
+    },
+    {
+      "name": "Footer",
+      "layout": "Dark theme block (bg-[#1F3A5F]) with White text and Gold subtle accents."
+    },
+    {
+      "name": "Floating WhatsApp",
+      "layout": "Fixed bottom-right corner. Green (#25D366) or Teal (#3BAFA0) with ping/pulse animation."
+    }
+  ],
+  "media": {
+    "image_urls": [
+      {
+        "url": "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "description": "Person holding iPhone - Use for Seller Path/Hero",
+        "category": "hero_or_seller"
+      },
+      {
+        "url": "https://images.pexels.com/photos/6373185/pexels-photo-6373185.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Clean white smartphone isolated - Use for Product Catalog mockups",
+        "category": "product_mockup"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1530319067432-f2a729c03db5?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "description": "Turned on iPhone on wooden surface - Use for Buyer Path context",
+        "category": "buyer_context"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1680188700677-93b9570882dc?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "description": "Subtle Bali texture/architecture - Use with very low opacity (5%) as a background element for Hero or Footer to add the requested elegant Balinese identity without being tacky.",
+        "category": "background_texture"
+      }
+    ]
+  },
+  "motion_and_interaction": {
+    "scroll": "Use Lenis for smooth momentum scrolling.",
+    "reveal": "Framer Motion staggered fade-up for bento grids and product catalogs.",
+    "hover": "Apple-style slight scale-up (scale-105) on product cards. Buttons use shadow-expansion and subtle brightness shift."
+  },
+  "instructions_to_main_agent": [
+    "Install and use 'Plus Jakarta Sans' for headings and 'Manrope' for body font.",
+    "Use Phosphor Icons (@phosphor-icons/react) for clean, premium iconography.",
+    "Ensure the layout strictly follows mobile-first principles with 1-column grids transforming to 3 or 4 columns on large screens.",
+    "All CTAs must direct to a WhatsApp URL.",
+    "Implement the Price Estimator purely in React state (no backend). Use Shadcn Select and form components heavily customized to match the Gold/Navy theme.",
+    "Do NOT use pure #000000 or #FFFFFF blindly. White should be clean, text should be #1A1A1A, and use #F5F6F8 for section contrast.",
+    "For the 'Balinese touch', add thin borders (`border-b border-[#E0A526]/20`) or use the provided Bali texture image with `opacity-5` and `mix-blend-multiply` over the white or gray background.",
+    "Include data-testid attributes on all interactive elements (buttons, accordion triggers, calculator inputs)."
+  ]
+}
