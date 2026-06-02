@@ -1,34 +1,53 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Dedari Store Bali — global styling */
+
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+body {
+  font-family: 'Manrope', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #1A1A1A;
+  background: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-.App-link {
-    color: #61dafb;
+::selection {
+  background: #E0A526;
+  color: #ffffff;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Hide horizontal scroll caused by decorative blurs */
+body, .App {
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar (subtle) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F6F8;
+}
+::-webkit-scrollbar-thumb {
+  background: #1F3A5F;
+  border-radius: 8px;
+  border: 2px solid #F5F6F8;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #152842;
+}
+
+/* Smooth reveal helper (fallback if framer-motion suppressed) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }

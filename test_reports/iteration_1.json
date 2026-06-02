@@ -1,0 +1,39 @@
+{
+  "summary": "Frontend-only test of Dedari Store Bali landing page. All 24 critical checks passed including app load, header/nav, hero, calculator (success + rejection), buyer catalog (8 items + filters + terjual overlay), FAQ accordion, floating WA button, footer, and mobile responsive menu. Zero console errors observed.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Minor: BuyerPath.jsx HARGA_RANGES filter logic uses `u.harga < r.min` and `u.harga >= r.max` — the boundary '5-8 juta' bucket includes 5M but excludes 8M (acceptable contiguous behaviour). Document if intentional.",
+    "Minor: pricing.js — Math.round((titipJual * (1 - potonganJualPutus)) / 50000) * 50000 rounds to nearest 50k. iPhone 13 128GB Grade A computed 5,850,000 (titip) and 5,450,000 (putus). Confirmed correct per config.",
+    "Minor: Calculator field state — when user changes 'model', kapasitas resets but bh/kondisi/riwayat/kelengkapan persist. Acceptable but consider clarifying UX.",
+    "Minor: Product card terjual uses href='#' with onClick preventDefault — works but href='javascript:void(0)' or absent href on disabled state would be cleaner.",
+    "Good: All required data-testid attributes are present and working; no hardcoded URLs; uses REACT_APP_BACKEND_URL pattern via .env."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (not requested)", "frontend": "100% (24/24 checks passed)"},
+  "test_credentials": "N/A — no auth in app",
+  "seed_data_creation": "None — all data is in /app/frontend/src/data/config.json",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Single-page landing for Dedari Store Bali (iPhone reseller in Bali). Frontend-only React + Tailwind app, no backend APIs. All data in config.json (WA number 6281237529881, 8 catalog items, pricing tiers). Public URL: https://beli-jual-iphone.preview.emergentagent.com. Tested viewports: 1920x1080 desktop + 375x844 mobile. All flows worked first time without code changes.",
+  "verified_calculations": {
+    "iPhone 13 128GB / BH 90 / Mulus / Original / Fullset -> Grade A, Titip Rp 5.850.000, Putus Rp 5.450.000": "Matches config (6,500,000 * 0.90 = 5,850,000; 5,850,000 * 0.93 = 5,440,500 -> rounded 5,450,000)",
+    "iPhone 13 128GB / BH 70 -> calc-rejected shown with correct message": "Pass"
+  },
+  "test_evidence": {
+    "header_wa_href": "https://wa.me/6281237529881?text=Halo%20Dedari%20Store%2C%20saya%20mau%20tanya-tanya.",
+    "catalog_count": "8 unit ditampilkan (default), 4 unit ditampilkan after Grade A filter",
+    "product_6_state": "Button text 'Sudah Terjual' with cursor-not-allowed class and Terjual overlay",
+    "nav_links_smooth_scroll": "All 4 nav links (penjual/pembeli/cara-kerja/faq) scroll target into viewport",
+    "mobile_menu": "Toggle button visible at 375px, opens mobile-nav-penjual etc."
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "_README": "=== KONFIGURASI DEDARI STORE BALI === Edit file ini untuk update konten website. Tidak perlu sentuh file lain. Semua field yang diawali underscore (_) adalah komentar/penjelasan dan akan diabaikan oleh aplikasi.",
+
+  "kontak": {
+    "_komentar": "Ganti nomor WhatsApp tanpa tanda + (format: 62...). Instagram berisi link lengkap.",
+    "whatsapp": "6281237529881",
+    "instagram": "https://www.instagram.com/dedaristorebali",
+    "instagramHandle": "@dedaristorebali",
+    "email": "halo@dedaristorebali.com"
+  },
+
+  "info": {
+    "_komentar": "Info umum yang muncul di hero, footer, dan FAQ.",
+    "namaBrand": "Dedari Store Bali",
+    "tagline": "Jual iPhone di Harga yang Layak. Beli iPhone Second yang Terverifikasi.",
+    "jamOperasional": "Setiap hari, 09.00 - 21.00 WITA",
+    "area": "Denpasar, Badung, Gianyar, Tabanan (Sarbagita)",
+    "alamatSingkat": "Sarbagita, Bali"
+  },
+
+  "_komentarHargaPasaran": "Harga pasaran per model dalam Rupiah. Angka ini dipakai sebagai dasar perhitungan kalkulator estimasi. EDIT sesuai insting pasar kamu. Tambah model/kapasitas baru di sini.",
+  "hargaPasaran": {
+    "iPhone 11": { "64GB": 3500000, "128GB": 4000000, "256GB": 4500000 },
+    "iPhone 11 Pro": { "64GB": 4500000, "256GB": 5200000, "512GB": 5800000 },
+    "iPhone 12": { "64GB": 4500000, "128GB": 5000000, "256GB": 5800000 },
+    "iPhone 12 Pro": { "128GB": 6500000, "256GB": 7200000, "512GB": 8000000 },
+    "iPhone 13": { "128GB": 6500000, "256GB": 7500000, "512GB": 8500000 },
+    "iPhone 13 Pro": { "128GB": 9500000, "256GB": 10500000, "512GB": 11500000 },
+    "iPhone 14": { "128GB": 8500000, "256GB": 9800000, "512GB": 11000000 },
+    "iPhone 14 Pro": { "128GB": 12000000, "256GB": 13500000, "512GB": 15000000 },
+    "iPhone 15": { "128GB": 11000000, "256GB": 12500000, "512GB": 14000000 },
+    "iPhone 15 Pro": { "128GB": 14500000, "256GB": 16000000, "512GB": 18000000 }
+  },
+
+  "_komentarMultiplier": "Multiplier per grade (% dari harga pasaran). EDIT sesuai insting. Jual Putus = Titip Jual dikurangi 'potonganJualPutus'.",
+  "multiplierTitipJual": {
+    "A": 0.90,
+    "B": 0.85,
+    "C": 0.80,
+    "D": 0.72
+  },
+  "potonganJualPutus": 0.07,
+
+  "_komentarKatalog": "Daftar iPhone untuk pembeli. Tambah/edit/hapus sesukamu. Field 'foto' bisa pakai URL eksternal atau file di folder /public/produk/. Field 'status' isi 'tersedia' atau 'terjual'. Field 'asal' isi 'Ex-iBox', 'Resmi', atau 'Inter Bercukai'.",
+  "katalog": [
+    {
+      "id": 1,
+      "model": "iPhone 13",
+      "kapasitas": "128GB",
+      "warna": "Midnight",
+      "grade": "A",
+      "asal": "Ex-iBox",
+      "batteryHealth": 92,
+      "harga": 6800000,
+      "foto": "https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=800&q=80",
+      "status": "tersedia",
+      "highlight": "Mulus tanpa lecet, fullset original"
+    },
+    {
+      "id": 2,
+      "model": "iPhone 12",
+      "kapasitas": "128GB",
+      "warna": "Blue",
+      "grade": "B",
+      "asal": "Ex-iBox",
+      "batteryHealth": 87,
+      "harga": 4700000,
+      "foto": "https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=800&q=80",
+      "status": "tersedia",
+      "highlight": "Lecet halus tipis, box ada"
+    },
+    {
+      "id": 3,
+      "model": "iPhone 14 Pro",
+      "kapasitas": "256GB",
+      "warna": "Deep Purple",
+      "grade": "A",
+      "asal": "Resmi",
+      "batteryHealth": 94,
+      "harga": 12500000,
+      "foto": "https://images.unsplash.com/photo-1663499482523-1c0c1bae4ce1?w=800&q=80",
+      "status": "tersedia",
+      "highlight": "Like new, garansi resmi tersisa"
+    },
+    {
+      "id": 4,
+      "model": "iPhone 11",
+      "kapasitas": "128GB",
+      "warna": "White",
+      "grade": "C",
+      "asal": "Ex-iBox",
+      "batteryHealth": 83,
+      "harga": 3400000,
+      "foto": "https://images.unsplash.com/photo-1574755393849-623942496936?w=800&q=80",
+      "status": "tersedia",
+      "highlight": "Lecet wajar, unit only"
+    },
+    {
+      "id": 5,
+      "model": "iPhone 15",
+      "kapasitas": "128GB",
+      "warna": "Black",
+      "grade": "A",
+      "asal": "Inter Bercukai",
+      "batteryHealth": 99,
+      "harga": 10800000,
+      "foto": "https://images.unsplash.com/photo-1696446702183-be3d3e1b9eef?w=800&q=80",
+      "status": "tersedia",
+      "highlight": "Battery 99%, hampir baru"
+    },
+    {
+      "id": 6,
+      "model": "iPhone 13 Pro",
+      "kapasitas": "256GB",
+      "warna": "Sierra Blue",
+      "grade": "B",
+      "asal": "Ex-iBox",
+      "batteryHealth": 89,
+      "harga": 9200000,
+      "foto": "https://images.unsplash.com/photo-1592286927505-1def25115558?w=800&q=80",
+      "status": "terjual",
+      "highlight": "Warna langka, baru terjual"
+    },
+    {
+      "id": 7,
+      "model": "iPhone 12 Pro",
+      "kapasitas": "256GB",
+      "warna": "Graphite",
+      "grade": "B",
+      "asal": "Ex-iBox",
+      "batteryHealth": 86,
+      "harga": 6500000,
+      "foto": "https://images.unsplash.com/photo-1577909536048-7c8eaba29c43?w=800&q=80",
+      "status": "tersedia",
+      "highlight": "Box ada, charger opsional"
+    },
+    {
+      "id": 8,
+      "model": "iPhone 14",
+      "kapasitas": "128GB",
+      "warna": "Starlight",
+      "grade": "A",
+      "asal": "Resmi",
+      "batteryHealth": 95,
+      "harga": 8900000,
+      "foto": "https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=800&q=80",
+      "status": "tersedia",
+      "highlight": "Fullset, garansi resmi 4 bulan"
+    }
+  ]
+}
