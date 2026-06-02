@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { label: "Untuk Penjual", id: "penjual" },
   { label: "Untuk Pembeli", id: "pembeli" },
   { label: "Cara Kerja", id: "cara-kerja" },
+  { label: "Testimoni", id: "testimoni" },
   { label: "FAQ", id: "faq" },
 ];
 

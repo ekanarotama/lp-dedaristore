@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { MessageCircle, BatteryMedium, ShieldCheck, ImageOff } from "lucide-react";
+import { MessageCircle, BatteryMedium, ShieldCheck, Smartphone, HardDrive, Palette } from "lucide-react";
 import config from "@/data/config.json";
 import { waKatalog, formatRupiah } from "@/lib/whatsapp";
 import {
@@ -8,10 +8,10 @@ import {
 } from "@/components/ui/select";
 
 const GRADE_STYLES = {
-  A: "bg-[#3BAFA0]/12 text-[#2E8B7F] border-[#3BAFA0]/30",
-  B: "bg-[#E0A526]/12 text-[#A87913] border-[#E0A526]/30",
-  C: "bg-orange-100 text-orange-700 border-orange-200",
-  D: "bg-gray-100 text-gray-700 border-gray-200",
+  A: { bg: "bg-[#3BAFA0]/12", text: "text-[#2E8B7F]", border: "border-[#3BAFA0]/30", dot: "#3BAFA0" },
+  B: { bg: "bg-[#E0A526]/12", text: "text-[#A87913]", border: "border-[#E0A526]/30", dot: "#E0A526" },
+  C: { bg: "bg-orange-100", text: "text-orange-700", border: "border-orange-200", dot: "#EA580C" },
+  D: { bg: "bg-gray-100", text: "text-gray-700", border: "border-gray-200", dot: "#6B7280" },
 };
 
 const HARGA_RANGES = [
@@ -27,13 +27,19 @@ export function BuyerPath() {
   const [filterGrade, setFilterGrade] = useState("all");
   const [filterHarga, setFilterHarga] = useState("all");
 
-  const allModels = useMemo(
-    () => Array.from(new Set(config.katalog.map((x) => x.model))),
+  // Only show available stock (ready stock)
+  const readyStock = useMemo(
+    () => config.katalog.filter((u) => u.status === "tersedia"),
     []
   );
 
+  const allModels = useMemo(
+    () => Array.from(new Set(readyStock.map((x) => x.model))),
+    [readyStock]
+  );
+
   const items = useMemo(() => {
-    return config.katalog.filter((u) => {
+    return readyStock.filter((u) => {
       if (filterModel !== "all" && u.model !== filterModel) return false;
       if (filterGrade !== "all" && u.grade !== filterGrade) return false;
       if (filterHarga !== "all") {
@@ -43,7 +49,7 @@ export function BuyerPath() {
       }
       return true;
     });
-  }, [filterModel, filterGrade, filterHarga]);
+  }, [readyStock, filterModel, filterGrade, filterHarga]);
 
   return (
     <section
@@ -60,7 +66,7 @@ export function BuyerPath() {
           className="max-w-3xl"
         >
           <span className="inline-block text-xs sm:text-sm font-bold tracking-[0.25em] text-[#3BAFA0] uppercase mb-4">
-            Untuk Pembeli
+            Ready Stock · Untuk Pembeli
           </span>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1F3A5F] tracking-tight leading-tight"
@@ -69,14 +75,23 @@ export function BuyerPath() {
             iPhone Second Terverifikasi, Siap Pakai.
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#4A5568] leading-relaxed">
-            Semua iPhone di Dedari Store sudah kami cek: terdaftar resmi (ex-iBox/Blibli/Digimap) atau
-            inter yang sudah bercukai & IMEI terdaftar, battery health minimal 80%, dan punya grade
-            kondisi yang jelas. Tidak ada kejutan.
+            Semua unit sudah kami cek: terdaftar resmi (ex-iBox/Blibli/Digimap) atau inter bercukai
+            & IMEI terdaftar, battery health minimal 80%, dan punya grade kondisi yang jelas.
+            <span className="block mt-2 text-sm text-[#4A5568]/80 italic">
+              Mau lihat foto unit & detail lengkap? Tanya admin via WhatsApp — kami kirim
+              langsung ke chat.
+            </span>
           </p>
         </motion.div>
 
         {/* Filter bar */}
-        <div className="mt-10 bg-white rounded-2xl p-4 sm:p-5 border border-gray-100 shadow-sm flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-10 bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-5 border border-gray-100 shadow-sm flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center"
+        >
           <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#1F3A5F] sm:mr-2">
             Filter
           </span>
@@ -108,21 +123,33 @@ export function BuyerPath() {
             options={HARGA_RANGES.map((r) => ({ label: r.label, value: r.value }))}
           />
           <div className="sm:ml-auto text-xs sm:text-sm text-[#4A5568]" data-testid="catalog-count">
-            {items.length} unit ditampilkan
+            <span className="font-bold text-[#1F3A5F]">{items.length}</span> unit ready stock
           </div>
-        </div>
+        </motion.div>
 
-        {/* Grid */}
-        <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        {/* Stock list */}
+        <div className="mt-7 flex flex-col gap-4">
           {items.map((u, i) => (
-            <ProductCard key={u.id} unit={u} index={i} />
+            <StockRow key={u.id} unit={u} index={i} />
           ))}
           {items.length === 0 && (
-            <div className="col-span-full text-center py-14 text-[#4A5568]" data-testid="catalog-empty">
-              Belum ada unit yang cocok dengan filter ini. Coba ubah filter.
+            <div className="text-center py-14 text-[#4A5568] bg-white/60 rounded-2xl border border-gray-100" data-testid="catalog-empty">
+              Belum ada unit yang cocok dengan filter ini. Coba ubah filter atau tanya stok terbaru via WhatsApp.
             </div>
           )}
         </div>
+
+        {/* Bottom note */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-10 text-center text-sm text-[#4A5568] italic"
+        >
+          Stok update real-time. Untuk foto, video kondisi unit, dan info garansi — chat admin
+          langsung via WhatsApp.
+        </motion.p>
       </div>
     </section>
   );
@@ -146,105 +173,91 @@ function FilterSelect({ value, onChange, placeholder, options, testId }) {
   );
 }
 
-function ProductCard({ unit, index }) {
-  const terjual = unit.status === "terjual";
-  const [imgErr, setImgErr] = useState(false);
+function StockRow({ unit, index }) {
+  const g = GRADE_STYLES[unit.grade] || GRADE_STYLES.D;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: (index % 4) * 0.05 }}
+      transition={{ duration: 0.45, delay: (index % 6) * 0.05 }}
       data-testid={`product-card-${unit.id}`}
-      className={`group bg-white rounded-2xl p-4 border border-gray-100 flex flex-col gap-3 transition-all hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(31,58,95,0.18)] ${
-        terjual ? "opacity-70" : ""
-      }`}
+      className="group bg-white rounded-2xl border border-gray-100 shadow-[0_2px_12px_rgba(31,58,95,0.04)] hover:shadow-[0_18px_40px_-15px_rgba(31,58,95,0.18)] hover:-translate-y-0.5 transition-all overflow-hidden"
     >
-      <div className="relative aspect-square rounded-xl bg-gradient-to-br from-[#F5F6F8] to-[#E8EBF0] overflow-hidden">
-        {!imgErr ? (
-          <img
-            src={unit.foto}
-            alt={`${unit.model} ${unit.kapasitas} ${unit.warna}`}
-            loading="lazy"
-            onError={() => setImgErr(true)}
-            className={`w-full h-full object-cover transition-transform duration-500 ${
-              terjual ? "" : "group-hover:scale-105"
-            }`}
-          />
-        ) : (
-          <div className="w-full h-full flex flex-col items-center justify-center text-[#4A5568]/60">
-            <ImageOff size={32} />
-            <span className="text-xs mt-2">Foto unit</span>
-          </div>
-        )}
-        {terjual && (
-          <div className="absolute inset-0 bg-[#1F3A5F]/70 flex items-center justify-center">
-            <span className="bg-white text-[#1F3A5F] font-extrabold text-sm tracking-[0.25em] px-4 py-2 rounded-full uppercase">
-              Terjual
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-5 md:gap-6 p-5 sm:p-6 md:items-center">
+        {/* Left: model + specs */}
+        <div className="flex flex-col gap-3">
+          {/* Title row */}
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <h3 className="text-lg sm:text-xl font-extrabold text-[#1F3A5F] tracking-tight leading-tight"
+              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              {unit.model}{" "}
+              <span className="font-semibold text-[#4A5568]">{unit.kapasitas}</span>
+            </h3>
+            <span
+              className={`inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-bold uppercase px-2.5 py-1 rounded-full border ${g.bg} ${g.text} ${g.border}`}
+            >
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: g.dot }} />
+              Grade {unit.grade}
+            </span>
+            <span className="inline-flex items-center text-[10px] font-semibold bg-[#1F3A5F]/8 text-[#1F3A5F] px-2 py-1 rounded-full border border-[#1F3A5F]/15">
+              {unit.asal}
+            </span>
+            <span className="inline-flex items-center gap-1 text-[10px] font-semibold bg-emerald-50 text-emerald-700 px-2 py-1 rounded-full border border-emerald-100">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Ready Stock
             </span>
           </div>
-        )}
-        <div className="absolute top-3 left-3 flex flex-col gap-1.5">
-          <span
-            className={`inline-flex items-center text-[10px] sm:text-xs font-bold uppercase px-2.5 py-1 rounded-full border ${GRADE_STYLES[unit.grade] || GRADE_STYLES.D}`}
-          >
-            Grade {unit.grade}
-          </span>
-        </div>
-        <div className="absolute top-3 right-3">
-          <span className="inline-flex items-center text-[10px] font-semibold bg-white/95 backdrop-blur text-[#1F3A5F] px-2 py-1 rounded-full border border-gray-100 shadow-sm">
-            {unit.asal}
-          </span>
-        </div>
-      </div>
 
-      <div className="flex flex-col flex-1">
-        <h3 className="font-bold text-[#1F3A5F] leading-tight">
-          {unit.model} <span className="font-medium text-[#4A5568]">{unit.kapasitas}</span>
-        </h3>
-        <p className="text-xs text-[#4A5568] mt-0.5">Warna {unit.warna}</p>
-
-        <div className="mt-3 flex items-center gap-3 text-xs text-[#4A5568]">
-          <span className="inline-flex items-center gap-1.5">
-            <BatteryMedium size={14} className="text-[#3BAFA0]" />
-            BH {unit.batteryHealth}%
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <ShieldCheck size={14} className="text-[#3BAFA0]" />
-            Verified
-          </span>
-        </div>
-
-        {unit.highlight && (
-          <p className="mt-3 text-xs text-[#4A5568] italic line-clamp-2">"{unit.highlight}"</p>
-        )}
-
-        <div className="mt-4 pt-4 border-t border-gray-100 flex items-end justify-between gap-2">
-          <div>
-            <p className="text-[10px] uppercase tracking-wider text-[#4A5568] font-semibold">Harga</p>
-            <p className="text-xl font-extrabold text-[#1F3A5F]">{formatRupiah(unit.harga)}</p>
+          {/* Spec grid */}
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[#4A5568]">
+            <SpecItem icon={<Palette size={14} className="text-[#3BAFA0]" />} label="Warna" value={unit.warna} />
+            <SpecItem icon={<HardDrive size={14} className="text-[#3BAFA0]" />} label="Kapasitas" value={unit.kapasitas} />
+            <SpecItem
+              icon={<BatteryMedium size={14} className="text-[#3BAFA0]" />}
+              label="Battery"
+              value={`${unit.batteryHealth}%`}
+            />
+            <SpecItem icon={<ShieldCheck size={14} className="text-[#3BAFA0]" />} label="Status" value="Verified" />
           </div>
+
+          {unit.highlight && (
+            <p className="text-xs sm:text-sm text-[#4A5568] italic">"{unit.highlight}"</p>
+          )}
         </div>
 
-        <a
-          href={terjual ? "#" : waKatalog(unit)}
-          target={terjual ? undefined : "_blank"}
-          rel="noopener noreferrer"
-          aria-disabled={terjual}
-          onClick={(e) => terjual && e.preventDefault()}
-          data-testid={`product-wa-btn-${unit.id}`}
-          className={`mt-4 inline-flex items-center justify-center gap-2 font-semibold rounded-full px-4 py-2.5 text-sm transition-all ${
-            terjual
-              ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-              : "bg-[#1F3A5F] text-white hover:bg-[#152842] shadow-sm hover:shadow-md"
-          }`}
-        >
-          <MessageCircle size={15} />
-          {terjual ? "Sudah Terjual" : "Tanya Unit Ini"}
-        </a>
+        {/* Right: price + CTA */}
+        <div className="flex flex-col items-start md:items-end gap-3 md:min-w-[240px] md:border-l md:border-gray-100 md:pl-6">
+          <div className="md:text-right">
+            <p className="text-[10px] uppercase tracking-wider text-[#4A5568] font-semibold">Harga</p>
+            <p className="text-2xl sm:text-3xl font-extrabold text-[#1F3A5F]">
+              {formatRupiah(unit.harga)}
+            </p>
+          </div>
+          <a
+            href={waKatalog(unit)}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid={`product-wa-btn-${unit.id}`}
+            className="inline-flex items-center justify-center gap-2 bg-[#1F3A5F] text-white hover:bg-[#152842] font-semibold rounded-full px-5 py-2.5 text-sm transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 w-full md:w-auto"
+          >
+            <MessageCircle size={15} />
+            Tanya Detail Admin
+          </a>
+        </div>
       </div>
     </motion.div>
+  );
+}
+
+function SpecItem({ icon, label, value }) {
+  return (
+    <span className="inline-flex items-center gap-1.5">
+      {icon}
+      <span className="text-[11px] uppercase tracking-wider text-[#4A5568]/70 font-semibold">{label}:</span>
+      <span className="text-[#1A1A1A] font-medium">{value}</span>
+    </span>
   );
 }
 

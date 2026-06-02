@@ -41,6 +41,65 @@
   },
   "potonganJualPutus": 0.07,
 
+  "_komentarTestimoni": "Daftar testimoni real customer dari story Instagram. Field 'foto' bisa pakai URL eksternal atau file di /public/testimoni/. Edit/tambah/hapus sesukamu.",
+  "testimoni": [
+    {
+      "id": 1,
+      "nama": "Ari",
+      "inisial": "AR",
+      "lokasi": "Denpasar",
+      "model": "iPhone 14 Pro 256GB",
+      "tanggal": "15 Mei 2025",
+      "rating": 5,
+      "foto": "/testimoni/t1.jpg",
+      "quote": "Awalnya malu-malu pas COD pertama, tapi setelah ketemu langsung enak. Battery health sesuai yang dibilang di chat, no drama. COD di Plasa Telkom Ubung jadi aman karena rame. Recommended banget 🙏"
+    },
+    {
+      "id": 2,
+      "nama": "Made",
+      "inisial": "MD",
+      "lokasi": "Tabanan",
+      "model": "iPhone 14 Fullset",
+      "tanggal": "14 Des 2025",
+      "rating": 5,
+      "foto": "/testimoni/t2.jpg",
+      "quote": "Beli iPhone 14 buat hadiah ke adik. Lama nyari yang fullset orisinal dengan harga masuk akal. Di Dedari dapat unit ex-iBox masih segel. Chat fast respon, COD langsung cair. Pelayanannya mantap."
+    },
+    {
+      "id": 3,
+      "nama": "Tika",
+      "inisial": "TK",
+      "lokasi": "Denpasar",
+      "model": "iPhone 11",
+      "tanggal": "26 Mar 2025",
+      "rating": 5,
+      "foto": "/testimoni/t3.jpg",
+      "quote": "Tadinya mau jual iPhone aku ke counter, ditawar cuma 2,8jt padahal masih mulus. Akhirnya titip jual di Dedari, 10 hari laku 3,5jt. Selisih lumayan buat tambahan beli iPhone yang baru hehe"
+    },
+    {
+      "id": 4,
+      "nama": "Adrian Rocky",
+      "inisial": "AD",
+      "lokasi": "Badung",
+      "model": "iPhone 15 128GB",
+      "tanggal": "3 hari lalu",
+      "rating": 5,
+      "foto": "/testimoni/t4.jpg",
+      "quote": "Awalnya skeptis sih karena second, tapi sebelum COD diminta video unboxing dulu. Battery 86% sesuai keterangan, IMEI dicek bareng-bareng pas ketemu. Owner-nya sabar jelasin semua. Top!"
+    },
+    {
+      "id": 5,
+      "nama": "Sasvva",
+      "inisial": "SV",
+      "lokasi": "Denpasar",
+      "model": "iPhone 15 128GB Pink",
+      "tanggal": "2 Des 2025",
+      "rating": 5,
+      "foto": "/testimoni/t5.jpg",
+      "quote": "Gilaaa belum diupload katalog udah sold duluan ke aku 😂 Lagi cari iPhone 15 pink yang fullset. Pas DM dapet info ada barang, langsung deal. Packing rapi, semua kelengkapan komplit. Senang banget!"
+    }
+  ],
+
   "_komentarKatalog": "Daftar iPhone untuk pembeli. Tambah/edit/hapus sesukamu. Field 'foto' bisa pakai URL eksternal atau file di folder /public/produk/. Field 'status' isi 'tersedia' atau 'terjual'. Field 'asal' isi 'Ex-iBox', 'Resmi', atau 'Inter Bercukai'.",
   "katalog": [
     {

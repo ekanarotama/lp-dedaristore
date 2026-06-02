@@ -8,6 +8,7 @@ import { BuyerPath } from "@/components/sections/BuyerPath";
 import { Grading } from "@/components/sections/Grading";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { TrustSignals } from "@/components/sections/TrustSignals";
+import { Testimoni } from "@/components/sections/Testimoni";
 import { FAQ } from "@/components/sections/FAQ";
 import { Footer } from "@/components/sections/Footer";
 import { FloatingWhatsApp } from "@/components/sections/FloatingWhatsApp";
@@ -24,6 +25,7 @@ function App() {
         <Grading />
         <HowItWorks />
         <TrustSignals />
+        <Testimoni />
         <FAQ />
       </main>
       <Footer />
