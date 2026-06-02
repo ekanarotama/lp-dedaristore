@@ -40,7 +40,7 @@ export function SellerPath() {
     <section
       id="penjual"
       data-testid="seller-section"
-      className="relative bg-white py-20 lg:py-28"
+      className="relative bg-ivory py-20 lg:py-28 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <motion.div

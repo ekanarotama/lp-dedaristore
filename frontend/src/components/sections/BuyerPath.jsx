@@ -49,7 +49,7 @@ export function BuyerPath() {
     <section
       id="pembeli"
       data-testid="buyer-section"
-      className="relative bg-[#F5F6F8] py-20 lg:py-28"
+      className="relative bg-pearl-cool py-20 lg:py-28 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <motion.div

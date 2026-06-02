@@ -37,7 +37,7 @@ const FAQS = [
 
 export function FAQ() {
   return (
-    <section id="faq" data-testid="faq-section" className="bg-[#F5F6F8] py-20 lg:py-28">
+    <section id="faq" data-testid="faq-section" className="relative bg-pearl-cool py-20 lg:py-28 overflow-hidden">
       <div className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

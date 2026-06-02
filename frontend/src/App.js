@@ -14,7 +14,7 @@ import { FloatingWhatsApp } from "@/components/sections/FloatingWhatsApp";
 
 function App() {
   return (
-    <div className="App min-h-screen bg-white text-[#1A1A1A] font-body" data-testid="dedari-app">
+    <div className="App min-h-screen text-[#1A1A1A] font-body" data-testid="dedari-app">
       <Header />
       <main>
         <Hero />

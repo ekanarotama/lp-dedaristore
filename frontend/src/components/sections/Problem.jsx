@@ -20,7 +20,7 @@ export function Problem() {
     <section
       id="masalah"
       data-testid="problem-section"
-      className="relative bg-[#F5F6F8] py-20 lg:py-28"
+      className="relative bg-pearl-warm py-20 lg:py-28 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <motion.div

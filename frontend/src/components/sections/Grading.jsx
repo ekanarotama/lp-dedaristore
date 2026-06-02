@@ -43,7 +43,7 @@ const GRADES = [
 
 export function Grading() {
   return (
-    <section id="grading" data-testid="grading-section" className="bg-white py-20 lg:py-28">
+    <section id="grading" data-testid="grading-section" className="relative bg-light-glow py-20 lg:py-28 overflow-hidden">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

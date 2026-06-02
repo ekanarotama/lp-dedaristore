@@ -31,7 +31,7 @@ export function HowItWorks() {
     <section
       id="cara-kerja"
       data-testid="how-section"
-      className="bg-[#F5F6F8] py-20 lg:py-28 relative overflow-hidden"
+      className="relative bg-pearl-warm py-20 lg:py-28 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <motion.div

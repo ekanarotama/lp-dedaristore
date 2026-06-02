@@ -15,7 +15,7 @@ const ITEMS = [
 
 export function TrustSignals() {
   return (
-    <section data-testid="trust-section" className="bg-white py-20 lg:py-28">
+    <section data-testid="trust-section" className="relative bg-ivory py-20 lg:py-28 overflow-hidden">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
