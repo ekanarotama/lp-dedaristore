@@ -3,14 +3,30 @@ import React, { useState } from "react";
 /**
  * Logo Dedari Store Bali.
  * Loads /logo.png (full logo with built-in brandmark + "DEDARI STORE BALI" text).
- * Falls back to inline SVG emblem + text if image fails.
+ * - Default (light=false): plain image, scales to its container height.
+ * - light=true (dark backgrounds like footer): image inside white rounded card.
+ * - Falls back to SVG emblem + text if image fails.
  */
 export function Logo({ size = 48, light = false }) {
   const [imgOk, setImgOk] = useState(true);
-  const textColor = light ? "#FFFFFF" : "#1F3A5F";
-  const taglineColor = light ? "rgba(255,255,255,0.7)" : "#3BAFA0";
 
-  if (imgOk && !light) {
+  if (imgOk) {
+    if (light) {
+      // Dark background: wrap the logo image in a white rounded card
+      return (
+        <div className="inline-flex items-center" data-testid="brand-logo">
+          <div className="bg-white rounded-2xl p-3 shadow-lg">
+            <img
+              src="/logo.png"
+              alt="Dedari Store Bali"
+              onError={() => setImgOk(false)}
+              className="object-contain block h-16 sm:h-20 w-auto"
+            />
+          </div>
+        </div>
+      );
+    }
+    // Light background: plain image
     return (
       <div className="flex items-center" data-testid="brand-logo">
         <img
@@ -24,6 +40,8 @@ export function Logo({ size = 48, light = false }) {
   }
 
   // Fallback SVG + text
+  const textColor = light ? "#FFFFFF" : "#1F3A5F";
+  const taglineColor = light ? "rgba(255,255,255,0.7)" : "#3BAFA0";
   return (
     <div className="flex items-center gap-3" data-testid="brand-logo-fallback">
       <div
