@@ -37,9 +37,9 @@ export function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-        <div className="flex h-16 sm:h-20 items-center justify-between">
+        <div className="flex h-20 sm:h-28 items-center justify-between">
           <button onClick={() => scrollTo("hero")} className="cursor-pointer" data-testid="logo-home-btn" aria-label="Beranda">
-            <Logo size={40} />
+            <Logo size={52} />
           </button>
 
           <nav className="hidden lg:flex items-center gap-8">
