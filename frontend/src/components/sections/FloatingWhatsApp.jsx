@@ -18,7 +18,7 @@ export function FloatingWhatsApp() {
       rel="noopener noreferrer"
       data-testid="floating-wa-btn"
       aria-label="Chat WhatsApp"
-      className={`fixed z-50 bottom-5 left-5 sm:left-6 sm:bottom-6 transition-all duration-300 ${
+      className={`fixed z-50 bottom-5 right-5 sm:right-6 sm:bottom-6 transition-all duration-300 ${
         show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3 pointer-events-none"
       }`}
     >
